@@ -1,6 +1,6 @@
 # HATS: Histograms of Averaged Time Surfaces
 
-HATS is a novel data representation for event-based computer vision, proposed by [Sironi et al.](https://arxiv.org/pdf/1803.07913.pdf). It consists in creating an histogram of time surfaces: for each event, the corresponding time surface is generated and accumulated. 
+HATS is a novel data representation for event-based computer vision, proposed by [Sironi et al.](https://arxiv.org/pdf/1803.07913.pdf). It consists in creating an histogram of time surfaces: for each event, the corresponding time surface is generated and accumulated. More on this laters :)
 
 Here, a Python implementation of the algorithm is proposed. The DVS dataset is taken from [Tonic](https://tonic.readthedocs.io/en/latest/index.html) (check it out!), in which the HATS transform source code proposed here is embedded as a transform.
 
