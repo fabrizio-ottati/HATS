@@ -10,6 +10,7 @@ import numpy as np
 import h5py
 from tqdm import tqdm
 
+# Generation of a parametric SVM.
 gen_SVM = lambda C, seed: Pipeline(
     [
         ("scaler", Normalizer(norm="l2")),
@@ -28,6 +29,7 @@ gen_SVM = lambda C, seed: Pipeline(
     ]
 )
 
+# Flattening of the histogram for the SVM.
 flat_hist = lambda hist: hist.reshape((hist.shape[0], np.prod(hist.shape[1:])))
 
 f = h5py.File("NMNIST.hdf5", "r")
@@ -43,13 +45,14 @@ tr_idxs, val_idxs, _, _ = train_test_split(
 )
 
 
+# For HDF5 arrays, the indices need to be sorted.
 tr_idxs.sort()
 val_idxs.sort()
 print("="*50+"\nDividing dataset in training an validation.")
 print("-"*50+"\nTraining set.")
-X_tr, y_tr = flat_hist(np.stack([train['histograms'][idx] for idx in tqdm(tr_idxs)])), np.stack([train['labels'][idx] for idx in tqdm(tr_idxs)])
+X_tr, y_tr = flat_hist(train['histograms'][tr_idxs]), train['labels'][tr_idxs]
 print("-"*50+"\nValidation set.")
-X_val, y_val = flat_hist(np.stack([train['histograms'][idx] for idx in tqdm(val_idxs)])), np.stack([train['labels'][idx] for idx in tqdm(val_idxs)])
+X_val, y_val = flat_hist(train['histograms'][val_idxs]), train['labels'][val_idxs]
 
 print("="*50+"\nTuning the hyperparameters.")
 # Training and validation.
