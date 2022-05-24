@@ -27,4 +27,5 @@ tonic
 scikit-learn
 numpy
 tqdm # Optional but the progress bars are nice :)
+h5py
 ```
