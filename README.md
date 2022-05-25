@@ -4,6 +4,10 @@ HATS is a novel data representation for event-based computer vision, proposed by
 
 Here, a Python implementation of the algorithm is proposed. The DVS datasets are taken from [Tonic](https://tonic.readthedocs.io/en/latest/index.html) (check it out!), in which the HATS transform source code proposed here is embedded as a transform.
 
+## What is a DVS camera?
+
+Well, take a look to this [introduction from Tonic documentation](https://tonic.readthedocs.io/en/latest/getting_started/intro-event-cameras.html).
+
 ## The code
 
 The code consists of a couple of scripts for the dataset encoding and SVM training. The tested datasets are CIFAR10DVS and NMNIST.
