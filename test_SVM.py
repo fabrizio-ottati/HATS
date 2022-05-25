@@ -9,6 +9,7 @@ import tonic
 import numpy as np
 import h5py
 from tqdm import tqdm
+import sys
 
 # Generation of a parametric SVM.
 gen_SVM = lambda C, seed: Pipeline(
@@ -32,16 +33,17 @@ gen_SVM = lambda C, seed: Pipeline(
 # Flattening of the histogram for the SVM.
 flat_hist = lambda hist: hist.reshape((hist.shape[0], np.prod(hist.shape[1:])))
 
-f = h5py.File("NMNIST.hdf5", "r")
+assert len(sys.argv)>=2, "Error: too few arguments (HDF5 file is probably missing)."
+
+f = h5py.File(sys.argv[1], "r")
 train, test = f["train"], f["test"]
-ds = tonic.datasets.NMNIST(save_to="./data_tr", train=True)
 SEED, VAL_SIZE = 32, 0.2
 tr_idxs, val_idxs, _, _ = train_test_split(
-  range(len(ds)),
-  ds.targets,
-  stratify=ds.targets,
-  test_size=VAL_SIZE,
-  random_state=SEED
+    range(len(train["histograms"])),
+    train['labels'][:],
+    stratify=train['labels'][:],
+    test_size=VAL_SIZE,
+    random_state=SEED
 )
 
 

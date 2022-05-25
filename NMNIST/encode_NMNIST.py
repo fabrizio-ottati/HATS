@@ -4,9 +4,12 @@ import tonic
 import numpy as np
 import h5py
 from tonic.transforms import Denoise
+import sys; sys.path.append("../")
 from hats import HATS
 from joblib import Parallel, delayed
 from tqdm import tqdm
+
+assert len(sys.argv)>=2, "Error: too few arguments (HDF5 file name is probably missing.)"
 
 FILTER_TIME=1e4
 ds_tr, ds_ts = tonic.datasets.NMNIST(save_to="./data_tr", transform=Denoise(filter_time=FILTER_TIME), train=True), tonic.datasets.NMNIST(save_to="./data_ts", transform=Denoise(filter_time=FILTER_TIME), train=False)
@@ -17,7 +20,7 @@ HATS_wrapper = lambda events, label: (hats_encoder.get_histogram(events), label)
 
 BATCH_SIZE, TR_SIZE, TS_SIZE = 64, len(ds_tr), len(ds_ts)
 
-f = h5py.File('NMNIST.hdf5', 'w')
+f = h5py.File(sys.argv[1], 'w')
 hist_shape = HATS_wrapper(*ds_tr[0])[0].shape
 train, test = f.create_group("train"), f.create_group("test")
 
