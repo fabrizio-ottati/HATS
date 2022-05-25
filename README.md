@@ -10,7 +10,7 @@ The code consists of a couple of scripts for the dataset encoding and SVM traini
 
 In `encode_NMNIST.py`, the dataset NMNIST is downloaded from Tonic and encoded using the HATS code in `hats.py`; the results is saved to an HDF5 file (size is ~1GB), in order to play with the SVM without having to wait for the HATS encoding to be performed on the whole dataset. The HATS parameters are taken from the [supplementary material](https://openaccess.thecvf.com/content_cvpr_2018/Supplemental/1083-supp.pdf) of the HATS paper.
 
-In `test_SVM.py`, a LinearSVM is trained on the dataset using `SGDClassifier` from `sklearn`. 80% of the training dataset is used for training and 20% for validation, in order to choose the classifier hyperparameters. Then, the classifier is retrained on the whole dataset and tested on the test one. The resulting classification accuracy on NMNIST and CIFAR10DVS are 98.41% and 46.41%, respectively.
+In `test_SVM.py`, a LinearSVM is trained on the dataset using `SGDClassifier` from `sklearn`. 80% of the training dataset is used for training and 20% for validation, in order to choose the classifier hyperparameters. Then, the classifier is retrained on the whole dataset and tested on the test one. The resulting classification accuracies on NMNIST and CIFAR10DVS are 98.41% and 46.41%, respectively.
 
 ## Usage
 
@@ -34,6 +34,6 @@ tqdm # Optional but the progress bars are nice :)
 h5py
 ```
 
-## Possible improvements
+## Possible improvements and contributions
 
 I would love to add NCARS and NCALTECH101 to fully re-implement the HATS paper results, but I am lacking free time :) Any contribution would be highly appreciated!
