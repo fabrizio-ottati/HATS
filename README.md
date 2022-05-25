@@ -8,6 +8,10 @@ Here, a Python implementation of the algorithm is proposed. The DVS datasets are
 
 Well, take a look to this [introduction from Tonic documentation](https://tonic.readthedocs.io/en/latest/getting_started/intro-event-cameras.html).
 
+## What is a time surfaces?
+
+More on this in the future :)
+
 ## The code
 
 The code consists of a couple of scripts for the dataset encoding and SVM training. The tested datasets are CIFAR10DVS and NMNIST.
