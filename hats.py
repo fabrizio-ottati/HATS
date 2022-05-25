@@ -45,13 +45,14 @@ class HATS():
         ts_x, ts_y = locmem['x'] - event['x'], locmem['y'] - event['y']
         # Including only the events in the neighbourhood and in the time window. 
         mask = np.asarray((np.abs(ts_x)<=self._rho) & (np.abs(ts_y)<=self._rho) & (t_j>=t_start)).nonzero()[0]
-        ts = np.zeros((max(1,len(mask)), self._sdim, self._sdim), dtype=np.float32)
+        # For each event in the local memory that belongs to the spatial and temporal windows and for the current event, a time surface is generated.
+        locmem_ts = np.zeros((1+len(mask), self._sdim, self._sdim), dtype=np.float32)
         if len(mask)>0:
-            ts[np.arange(len(mask)), ts_y[mask]+self._rho, ts_x[mask]+self._rho] = np.exp(-(t_i-t_j[mask])/self._tau)
-        # Adding the current event to the time surface.
-        ts[0, self._rho, self._rho] += 1
-        # Accumulation of the time surfaces.
-        return np.sum(ts, axis=0)
+            locmem_ts[np.arange(len(mask)), ts_y[mask]+self._rho, ts_x[mask]+self._rho] = np.exp(-(t_i-t_j[mask])/self._tau)
+        # Adding the current event time surface.
+        locmem_ts[-1, self._rho, self._rho] = 1
+        # The accumulated time surfaces are returned.
+        return np.sum(locmem_ts, axis=0)
 
     def _map_to_locmems(self, events):
         locmems = self._gen_locmems()
