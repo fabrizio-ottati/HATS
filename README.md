@@ -37,3 +37,5 @@ h5py
 ## Possible improvements and contributions
 
 I would love to add NCARS and NCALTECH101 to fully re-implement the HATS paper results, but I am lacking free time :) Any contribution would be highly appreciated!
+
+I would also really appreciate if someone could help me reach the accuracies shown in the original article (i.e. 99.2% for NMNIST and 52% for CIFAR10DVS).
