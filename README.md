@@ -6,7 +6,7 @@ Here, a Python implementation of the algorithm is proposed. The DVS datasets are
 
 ## What is a DVS camera?
 
-Well, take a look to this [introduction from Tonic documentation](https://tonic.readthedocs.io/en/latest/getting_started/intro-event-cameras.html).
+Well, take a look to this [introduction from Tonic documentation](https://tonic.readthedocs.io/en/latest/getting_started/intro-event-cameras.html). Check out also [this tutorial](https://tonic.readthedocs.io/en/latest/tutorials/nmnist.html).
 
 ## What is a time surfaces?
 
