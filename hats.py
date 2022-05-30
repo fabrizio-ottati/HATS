@@ -58,7 +58,7 @@ class HATS():
         locmems = self._gen_locmems()
         # Mapping events to local memories. 
         for event in events:
-            locmems[self._px_to_cell[int(event['x']), int(event['y'])]][max(0, int(event['p']))].append(event)
+            locmems[self._px_to_cell[int(event['y']), int(event['x'])]][max(0, int(event['p']))].append(event)
         # Converting the lists in structured NumPy arrays.
         locmems = [[np.stack(locmems[c][p]) if locmems[c][p] else np.empty((0,)) for p in range(self._npols)] for c in range(self._ncells)]
         return locmems
