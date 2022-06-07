@@ -50,7 +50,7 @@ class HATS():
         if len(mask)>0:
             locmem_ts[np.arange(len(mask)), ts_y[mask]+self._rho, ts_x[mask]+self._rho] = np.exp(-(t_i-t_j[mask])/self._tau)
         # Adding the current event time surface.
-        locmem_ts[-1, self._rho, self._rho] = 1
+        locmem_ts[-1, self._rho, self._rho] += 1
         # The accumulated time surfaces are returned.
         return np.sum(locmem_ts, axis=0)
 
